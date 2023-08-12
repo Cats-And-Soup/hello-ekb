@@ -1,8 +1,44 @@
 import { Chip } from "../../shared/ui/chip.tsx";
 import "./main.css";
 import { Slider } from "../../widgets/slider/slider.tsx";
-import { DefaultEvents } from "../../shared/types/event.ts";
+import { DefaultEvents, IEvent } from "../../shared/types/event.ts";
 import { Card } from "../../widgets/card/card.tsx";
+import * as React from "react";
+
+const CardSection: React.FC<{ title: string; events: IEvent[] }> = ({
+  title,
+  events,
+}) => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "15px",
+        marginTop: "25px",
+      }}
+    >
+      <p style={{ fontSize: "20px", fontWeight: "500" }}>
+        {title} {">"}
+      </p>
+      <div
+        style={{
+          display: "grid",
+          gap: "20px",
+          gridTemplateColumns: "1fr 1fr 1fr 1fr",
+        }}
+      >
+        {events.map((ev) => (
+          <Card
+            title={ev.title}
+            description={ev.date + " в " + ev.time}
+            imageSrc={ev.image}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export const Main = () => {
   return (
@@ -17,24 +53,9 @@ export const Main = () => {
       <section>
         <Slider events={DefaultEvents} />
       </section>
-      <p style={{ fontSize: "20px", fontWeight: "500" }}>Сегодня {">"}</p>
-      <div
-        style={{
-          display: "grid",
-          gap: "20px",
-          gridTemplateColumns: "1fr 1fr 1fr 1fr",
-        }}
-      >
-        {DefaultEvents.map((ev) => (
-          <Card
-            title={ev.title}
-            description={ev.date + " в " + ev.time}
-            imageSrc={ev.image}
-          />
-        ))}
-      </div>
-      <section>Самые ожидаемые</section>
-      <section>Бесплатно</section>
+      <CardSection title={"Нет времени ждать"} events={DefaultEvents} />
+      <CardSection title={"Самые ожидаемые"} events={DefaultEvents} />
+      <CardSection title={"Бесплатно"} events={DefaultEvents} />
     </div>
   );
 };
