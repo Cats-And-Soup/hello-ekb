@@ -6,11 +6,13 @@ export interface IEvent {
   time: string;
   price: number;
   image: string;
+  tags: string[];
 }
 
 export const DefaultEvents: IEvent[] = [
   {
     id: "1",
+    tags: ["tranding", "18+"],
     title: "Pharaoh",
     description: "премьера нового альбома в Tele-Club",
     date: "8 сентября",
@@ -22,6 +24,7 @@ export const DefaultEvents: IEvent[] = [
   {
     id: "2",
     title: "S1mple",
+    tags: [],
     description:
       "проиграл алкашу из падика 1 на 1 и прошел в полуфинал по поеданию водяры за 5 минут. Событие года",
     date: "30 августа",

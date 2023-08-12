@@ -1,4 +1,12 @@
 .card-kit {
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+.card-title {
+    display: flex;
+    gap: 5px;
+    align-items: flex-start;
+    margin-top: 2px;
 }

@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { useAuthStore } from "../shared/stores/auth-store.tsx";
 import axios, { AxiosResponse } from "axios";
 import { BurgerMenu } from "../widgets/menu/menu.tsx";
+import { Search } from "../pages/search/search.tsx";
 
 export function App() {
   const { isOpened, setIsOpened } = useBurgerStore();
@@ -51,6 +52,7 @@ export function App() {
         <Route path={"/sign-in"} element={<SignIn />} />
         <Route path={"/profile"} element={<Profile />} />
         <Route path={"/schedule"} element={<Schedule />} />
+        <Route path={"/search"} element={<Search />} />
       </Routes>
     </main>
   );
