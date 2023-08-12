@@ -1,0 +1,32 @@
+.sign-up-page {
+    padding: 0 100px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.sign-up-notification{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+}
+
+.notification {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.notification div {
+    background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 12px;
+
+}

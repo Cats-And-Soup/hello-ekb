@@ -31,6 +31,7 @@ const CardSection: React.FC<{ title: string; events: IEvent[] }> = ({
         {events.map((ev) => (
           <Card
             title={ev.title}
+            key={ev.id}
             description={ev.date + " в " + ev.time}
             imageSrc={ev.image}
           />
