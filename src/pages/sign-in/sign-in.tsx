@@ -51,7 +51,8 @@ export const SignIn = () => {
         setId(res.data.id.toString());
         setName(res.data.name);
         navigate("/");
-      });
+      })
+      .catch((e) => setError(e.message));
   };
 
   useEffect(() => {
