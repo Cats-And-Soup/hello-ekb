@@ -20,12 +20,12 @@ export function App() {
       axios
         .post<
           string,
-          AxiosResponse<{ token: string; name: string; id: string }>
+          AxiosResponse<{ access_token: string; name: string; id: string }>
         >("http://100.76.84.25:8000/api/v1/refresh", token, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {
-          setToken(res.data.token);
+          setToken(res.data.access_token);
           setName(res.data.name);
           setId(res.data.id);
         })

@@ -16,9 +16,19 @@ export const Header = () => {
       >
         <img src={burger} height={14} alt={"-"} />
       </div>
-      <div>Поиск</div>{" "}
-      <div style={{ cursor: "pointer" }} onClick={() => navigate("/profile")}>
-        {name || "Войти"}
+      <div>Поиск</div>
+      <div
+        style={{ cursor: "pointer", display: "flex", gap: "5px" }}
+        onClick={() => navigate("/profile")}
+      >
+        <p>{name || "Войти"}</p>
+        <img
+          style={{ borderRadius: "100%", width: 24 }}
+          src={
+            "https://crypto.ru/wp-content/plugins/q-auth/assets/img/default-user.png"
+          }
+          alt={"user"}
+        />
       </div>
     </header>
   );

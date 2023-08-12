@@ -44,7 +44,10 @@ export const Profile = () => {
   }
   return (
     <div className={"profile-wrapper"}>
-      {user?.username} + {user?.email}
+      <h3>Имя пользователя</h3>
+      <p>{user?.name}</p>
+      <h3>Email пользователя</h3>
+      <p>{user?.email}</p>
     </div>
   );
 };
