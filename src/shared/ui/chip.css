@@ -10,8 +10,9 @@
     padding: 5px 20px;
 
     cursor: pointer;
-    width: auto;
+    width: fit-content;
     height: min-content;
+    max-width: 400px;
 
     margin-right: 5px;
 }
