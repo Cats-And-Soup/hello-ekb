@@ -61,6 +61,7 @@ export const Slider: React.FC<SliderProps> = ({ events }) => {
             <div
               style={{
                 position: "absolute",
+                cursor: "pointer",
                 left: "0",
                 top: "0",
                 width: "20%",
@@ -77,6 +78,7 @@ export const Slider: React.FC<SliderProps> = ({ events }) => {
             <div
               style={{
                 position: "absolute",
+                cursor: "pointer",
                 left: "80%",
                 top: "0",
                 width: "20%",

@@ -1,30 +1,68 @@
 import { useNavigate } from "react-router";
 import { Button } from "../../shared/ui/button.tsx";
 import { Input } from "../../shared/ui/input.tsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Cat from "../../shared/assets/acatwithoutsoup.png";
 import "./sign-up.css";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
+import { useAuthStore } from "../../shared/stores/auth-store.tsx";
+
+const validate = (username: string, password: string, email: string) => {
+  if (username.length < 4) {
+    throw new Error("Имя пользователя слишком короткое");
+  }
+  if (password.length < 8) {
+    throw new Error("Пароль слишком короткий");
+  }
+
+  if (email.length < 5 || !email.includes("@")) {
+    throw new Error("Введите корректный email");
+  }
+};
 
 export const SignUp = () => {
   const navigate = useNavigate();
+
+  const [error, setError] = useState<null | string>(null);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
+  const { token, setToken, setId, setName } = useAuthStore();
+
   const signUp = () => {
+    try {
+      validate(username, password, email);
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        setError(e.message);
+      }
+      return;
+    }
     axios
-      .post<{ password: string; name: string; email: string }>(
-        "http://100.76.84.25:8000/api/v1/users/create",
-        {
-          password,
-          name: username,
-          email,
-        },
-      )
-      .then(() => navigate("/"));
+      .post<
+        { password: string; name: string; email: string },
+        AxiosResponse<{ access_token: string; id: number; name: string }>
+      >("http://100.76.84.25:8000/api/v1/users/create", {
+        password,
+        name: username,
+        email,
+      })
+      .then((res) => {
+        setToken(res.data.access_token);
+        setId(res.data.id.toString());
+        setName(res.data.name);
+        navigate("/");
+      })
+      .catch(() => setError("Произошла ошибка при логине"));
   };
+
+  useEffect(() => {
+    if (token) {
+      navigate("/");
+    }
+  }, [token]);
 
   return (
     <div className={"sign-up-page"}>
@@ -54,6 +92,7 @@ export const SignUp = () => {
         <Button width={"80%"} onClick={() => signUp()}>
           Зарегестрироваться
         </Button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
         <p
           onClick={() => navigate("/sign-in")}
           style={{
