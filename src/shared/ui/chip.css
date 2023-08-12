@@ -1,0 +1,17 @@
+.chip-kit {
+    background-color: #fafafa;
+    border: #eee solid 1px;
+    color: #303030;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 500;
+
+    border-radius: 20px;
+    padding: 5px 20px;
+
+    cursor: pointer;
+    width: auto;
+    height: min-content;
+
+    margin-right: 5px;
+}

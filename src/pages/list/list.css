@@ -6,7 +6,12 @@
 }
 
 .list-type-button-wrapper {
-    display: grid;
-    place-items: flex-end;
+    display: flex;
+    justify-content: space-between;
     padding: 10px 100px;
+}
+
+.list-filters-wrapper {
+    display: flex;
+    gap: 5px;
 }
