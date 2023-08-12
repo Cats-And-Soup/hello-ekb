@@ -7,5 +7,6 @@
 
 .list-type-button-wrapper {
     display: grid;
-    place-items: center;
+    place-items: flex-end;
+    padding: 10px 100px;
 }

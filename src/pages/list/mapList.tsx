@@ -1,18 +1,17 @@
 import { YMaps, Map, Placemark } from "react-yandex-maps";
-import { useState } from "react";
 import * as React from "react";
 import "./list.css";
+import { Button } from "../../shared/ui/button.tsx";
+import { useNavigate } from "react-router";
 
-export const List = () => {
-  const [type, setType] = useState<"map" | "list">("map");
+export const MapList = () => {
+  const navigate = useNavigate();
   return (
     <div className={"map-wrapper"}>
       <div className={"list-type-button-wrapper"}>
-        <button onClick={() => setType(type === "map" ? "list" : "map")}>
-          Показать {type === "map" ? "списком" : "картой"}
-        </button>
+        <Button onClick={() => navigate("/")}>Показать списком</Button>
       </div>
-      {type === "map" ? <MapComponent /> : <ListRepresentation />}
+      <MapComponent />
     </div>
   );
 };
