@@ -1,9 +1,10 @@
-import { Input } from "../shared/ui/input.tsx";
+import { Input } from "../../shared/ui/input.tsx";
 import { useState, useEffect } from "react";
-import { Button } from "../shared/ui/button.tsx";
+import { Button } from "../../shared/ui/button.tsx";
 import axios, { AxiosResponse } from "axios";
-import { useAuthStore } from "../shared/stores/auth-store.tsx";
+import { useAuthStore } from "../../shared/stores/auth-store.tsx";
 import { useNavigate } from "react-router";
+import "./sign-in.css";
 
 export const SignIn = () => {
   const [username, setUsername] = useState("");
@@ -17,7 +18,7 @@ export const SignIn = () => {
       .post<
         { username: string; password: string },
         AxiosResponse<{ access_token: string; id: number; name: string }>
-      >("http://100.76.84.25:8000/api/v1/users/login", {
+      >("http://100.76.84.25:8000/api/v1/login", {
         username,
         password,
       })
@@ -52,7 +53,7 @@ export const SignIn = () => {
           onChange={setPassword}
         />
         <Button width={"80%"} onClick={() => signIn()}>
-          Зарегестрироваться
+          Войти
         </Button>
         <p
           onClick={() => navigate("/sign-in")}
@@ -66,7 +67,6 @@ export const SignIn = () => {
           Зарегестрироваться
         </p>
       </div>
-      sign in
     </div>
   );
 };

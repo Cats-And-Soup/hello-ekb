@@ -6,7 +6,7 @@ import { Main } from "../pages/main/main.tsx";
 import "./app.css";
 import { Header } from "../widgets/header/header.tsx";
 import { SignUp } from "../pages/sign-up/sign-up.tsx";
-import { SignIn } from "../pages/sign-in.tsx";
+import { SignIn } from "../pages/sign-in/sign-in.tsx";
 
 export function App() {
   return (
