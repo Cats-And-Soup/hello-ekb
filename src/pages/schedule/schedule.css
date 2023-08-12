@@ -1,0 +1,23 @@
+.schedule-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 100px;
+}
+.schedule {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+.schedule .day-of-week {
+    text-align: center;
+    background-color: #fafafa;
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+}
+
+.schedule .day-of-week .title {
+    padding: 10px 0;
+    background-color: #691C62;
+    color: white;
+    border-bottom: 1px solid #0002;
+}
