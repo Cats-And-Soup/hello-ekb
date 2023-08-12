@@ -11,7 +11,7 @@ const validate = (username: string, password: string, email: string) => {
   if (username.length < 4) {
     throw new Error("Имя пользователя слишком короткое");
   }
-  if (password.length < 8) {
+  if (password.length < 6) {
     throw new Error("Пароль слишком короткий");
   }
 
@@ -85,6 +85,7 @@ export const SignUp = () => {
         <Input
           value={password}
           width={"80%"}
+          type={"password"}
           placeholder={"Пароль"}
           onChange={setPassword}
           className="sign-up-input"

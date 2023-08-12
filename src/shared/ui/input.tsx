@@ -7,6 +7,7 @@ interface IInput {
   onChange: (v: string) => void;
   className?: string;
   placeholder?: string;
+  type?: string;
 }
 
 export const Input: React.FC<IInput> = ({
@@ -15,12 +16,14 @@ export const Input: React.FC<IInput> = ({
   width,
   className,
   onChange,
+  type = "text",
 }) => {
   return (
     <input
       className={"input-kit " + className}
       value={value}
       style={{ width }}
+      type={type}
       placeholder={placeholder}
       onChange={(e) => onChange(e.target.value)}
     />
