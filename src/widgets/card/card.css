@@ -1,0 +1,4 @@
+.card-kit {
+    display: flex;
+    flex-direction: column;
+}

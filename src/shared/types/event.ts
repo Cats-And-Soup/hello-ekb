@@ -1,4 +1,5 @@
 export interface IEvent {
+  id: string;
   title: string;
   description?: string;
   date: string;
@@ -9,6 +10,7 @@ export interface IEvent {
 
 export const DefaultEvents: IEvent[] = [
   {
+    id: "1",
     title: "Pharaoh",
     description: "премьера нового альбома в Tele-Club",
     date: "8 сентября",
@@ -18,9 +20,10 @@ export const DefaultEvents: IEvent[] = [
       "https://sportishka.com/uploads/posts/2022-11/1667550932_49-sportishka-com-p-mashina-faraona-pinterest-50.jpg",
   },
   {
-    title:
-      "S1mple проиграл алкашу из падика 1 на 1 и прошел в полуфинал по поеданию водяры за 5 минут",
-    description: "Событие года",
+    id: "2",
+    title: "S1mple",
+    description:
+      "проиграл алкашу из падика 1 на 1 и прошел в полуфинал по поеданию водяры за 5 минут. Событие года",
     date: "30 августа",
     time: "18:00",
     price: 0,
