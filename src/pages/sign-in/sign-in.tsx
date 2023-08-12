@@ -83,9 +83,10 @@ export const SignIn = () => {
         </Button>
         {error && <div style={{ color: "red" }}>{error}</div>}
         <p
-          onClick={() => navigate("/sign-in")}
+          onClick={() => navigate("/sign-up")}
           style={{
             color: "gray",
+            cursor: "pointer",
             fontSize: "14px",
             textAlign: "center",
             width: "80%",

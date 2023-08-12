@@ -22,13 +22,15 @@ export const Header = () => {
         onClick={() => navigate("/profile")}
       >
         <p>{name || "Войти"}</p>
-        <img
-          style={{ borderRadius: "100%", width: 24 }}
-          src={
-            "https://crypto.ru/wp-content/plugins/q-auth/assets/img/default-user.png"
-          }
-          alt={"user"}
-        />
+        {name && (
+          <img
+            style={{ borderRadius: "100%", width: 24 }}
+            src={
+              "https://crypto.ru/wp-content/plugins/q-auth/assets/img/default-user.png"
+            }
+            alt={"user"}
+          />
+        )}
       </div>
     </header>
   );

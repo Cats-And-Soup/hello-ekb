@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Schedule } from "../pages/schedule/schedule.tsx";
 import { Profile } from "../pages/profile/profile.tsx";
 import { MapList } from "../pages/list/mapList.tsx";
@@ -11,6 +11,7 @@ import { useBurgerStore } from "../shared/stores/burger-store.tsx";
 import { useEffect } from "react";
 import { useAuthStore } from "../shared/stores/auth-store.tsx";
 import axios, { AxiosResponse } from "axios";
+import { BurgerMenu } from "../widgets/menu/menu.tsx";
 
 export function App() {
   const { isOpened, setIsOpened } = useBurgerStore();
@@ -39,36 +40,7 @@ export function App() {
       style={{ overflow: isOpened ? "hidden" : "visible" }}
     >
       <Header />
-      {isOpened && (
-        <div
-          style={{
-            position: "absolute",
-            zIndex: 2,
-            top: 0,
-            left: 0,
-            width: "300px",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            gap: "15px",
-            backgroundColor: "white",
-            padding: "100px 50px",
-          }}
-        >
-          <Link to={"/"}>
-            <p>Главная {">"}</p>
-          </Link>
-          <Link to={"/map-list"}>
-            <p>Карта {">"}</p>
-          </Link>
-          <Link to={"/profile"}>
-            <p>Профиль {">"}</p>
-          </Link>
-          <Link to={"/schedule"}>
-            <p>Календарь событий {">"}</p>
-          </Link>
-        </div>
-      )}
+      {isOpened && <BurgerMenu />}
       {isOpened && (
         <div className={"overlay"} onClick={() => setIsOpened(false)}></div>
       )}
