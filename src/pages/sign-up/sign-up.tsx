@@ -55,7 +55,13 @@ export const SignUp = () => {
         setName(res.data.name);
         navigate("/");
       })
-      .catch(() => setError("Произошла ошибка при логине"));
+      .catch((e) => {
+        setError(
+          e.response.data.detail?.[0]?.msg ||
+            e.message ||
+            "Произошла ошибка при регистрации",
+        );
+      });
   };
 
   useEffect(() => {
@@ -93,7 +99,7 @@ export const SignUp = () => {
         <Button width={"80%"} onClick={() => signUp()}>
           Зарегестрироваться
         </Button>
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {error && <p style={{ color: "red", width: "300px" }}>{error}</p>}
         <p
           onClick={() => navigate("/sign-in")}
           style={{

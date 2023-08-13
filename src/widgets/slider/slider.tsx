@@ -18,6 +18,7 @@ export const Slider: React.FC<SliderProps> = ({ events }) => {
         }
         return (
           <div
+            key={eventModel.id}
             style={{
               position: "relative",
               width: "100%",
@@ -31,6 +32,7 @@ export const Slider: React.FC<SliderProps> = ({ events }) => {
               alt={"123123123"}
               onClick={() => navigate("/event/" + eventModel.id)}
               style={{
+                cursor: "pointer",
                 minHeight: "100%",
                 minWidth: "100%",
                 objectFit: "cover",
@@ -41,9 +43,9 @@ export const Slider: React.FC<SliderProps> = ({ events }) => {
                 color: "white",
                 position: "absolute",
                 textTransform: "uppercase",
-                top: "75%",
+                top: "70%",
                 left: "50px",
-                fontSize: "26px",
+                fontSize: "46px",
               }}
             >
               {eventModel.title}
@@ -52,8 +54,9 @@ export const Slider: React.FC<SliderProps> = ({ events }) => {
               style={{
                 color: "white",
                 position: "absolute",
-                top: "calc(75% + 35px)",
+                top: "calc(70% + 50px)",
                 left: "50px",
+                fontSize: "24px",
               }}
             >
               {eventModel.description}

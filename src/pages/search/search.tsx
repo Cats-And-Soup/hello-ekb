@@ -1,16 +1,23 @@
 import { Input } from "../../shared/ui/input.tsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "../../widgets/card/card.tsx";
 import "./search.css";
 import { useNavigate } from "react-router";
 import dayjs from "dayjs";
-import { useEventsStore } from "../../shared/stores/events-store.tsx";
+import axios from "axios";
+import { IEvent } from "../../shared/types/event.ts";
 
 export const Search = () => {
   const [searchInput, setSearchInput] = useState("");
+  const [filteredEvents, setFilteredEvents] = useState<IEvent[]>([]);
   const navigate = useNavigate();
-  const { allEvents } = useEventsStore();
-  console.log(allEvents);
+  useEffect(() => {
+    axios
+      .get(`http://100.76.84.25:8000/api/v1/events/find?text=${searchInput}`)
+      .then((res) => {
+        setFilteredEvents(res.data);
+      });
+  }, [searchInput]);
   return (
     <div className={"search-wrapper"}>
       <Input
@@ -20,7 +27,7 @@ export const Search = () => {
         width={"600px"}
       />
       <div className={"search-results"}>
-        {allEvents.map((ev) => (
+        {filteredEvents.map((ev) => (
           <Card
             onClick={() => navigate("/event/" + ev.id)}
             title={ev.title}

@@ -6,11 +6,13 @@ import { Card } from "../../widgets/card/card.tsx";
 import * as React from "react";
 import { useEventsStore } from "../../shared/stores/events-store.tsx";
 import dayjs from "dayjs";
+import { useNavigate } from "react-router";
 
 const CardSection: React.FC<{ title: string; events: IEvent[] }> = ({
   title,
   events,
 }) => {
+  const navigate = useNavigate();
   return (
     <div
       style={{
@@ -20,7 +22,7 @@ const CardSection: React.FC<{ title: string; events: IEvent[] }> = ({
         marginTop: "25px",
       }}
     >
-      <p style={{ fontSize: "20px", fontWeight: "500" }}>
+      <p style={{ fontSize: "32px", fontWeight: "500" }}>
         {title} {">"}
       </p>
       <div
@@ -35,6 +37,7 @@ const CardSection: React.FC<{ title: string; events: IEvent[] }> = ({
             title={ev.title}
             key={ev.id}
             tags={ev.tags}
+            onClick={() => navigate("/event/" + ev.id)}
             description={
               "Начало в " +
               dayjs(ev.start_datetime).add(5, "hours").format("HH:mm DD.MM")

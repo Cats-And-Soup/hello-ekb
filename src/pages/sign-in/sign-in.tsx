@@ -52,7 +52,14 @@ export const SignIn = () => {
         setName(res.data.name);
         navigate("/");
       })
-      .catch((e) => setError(e.message));
+      .catch((e) => {
+        console.log(e);
+        setError(
+          e.response.data.detail?.[0]?.msg ||
+            e.message ||
+            "Произошла ошибка при логине",
+        );
+      });
   };
 
   useEffect(() => {
@@ -81,7 +88,7 @@ export const SignIn = () => {
         <Button width={"80%"} onClick={() => signIn()}>
           Войти
         </Button>
-        {error && <div style={{ color: "red" }}>{error}</div>}
+        {error && <div style={{ color: "red", width: "300px" }}>{error}</div>}
         <p
           onClick={() => navigate("/sign-up")}
           style={{
