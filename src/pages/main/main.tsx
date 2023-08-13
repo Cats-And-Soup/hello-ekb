@@ -4,7 +4,7 @@ import { Slider } from "../../widgets/slider/slider.tsx";
 import { IEvent } from "../../shared/types/event.ts";
 import { Card } from "../../widgets/card/card.tsx";
 import * as React from "react";
-import { useEventsStore } from "../../shared/stores/events-store.ts";
+import { useEventsStore } from "../../shared/stores/events-store.tsx";
 import dayjs from "dayjs";
 
 const CardSection: React.FC<{ title: string; events: IEvent[] }> = ({

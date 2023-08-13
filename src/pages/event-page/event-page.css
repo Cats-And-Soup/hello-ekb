@@ -1,0 +1,13 @@
+.event-wrapper {
+    padding: 10px 100px;
+}
+
+.left-side-wrapper {
+    text-align: end;
+    padding: 70px 0;
+}
+
+.event-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

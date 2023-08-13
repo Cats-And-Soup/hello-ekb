@@ -4,7 +4,7 @@ import { Card } from "../../widgets/card/card.tsx";
 import "./search.css";
 import { useNavigate } from "react-router";
 import dayjs from "dayjs";
-import { useEventsStore } from "../../shared/stores/events-store.ts";
+import { useEventsStore } from "../../shared/stores/events-store.tsx";
 
 export const Search = () => {
   const [searchInput, setSearchInput] = useState("");

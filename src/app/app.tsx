@@ -14,11 +14,14 @@ import axios, { AxiosResponse } from "axios";
 import { BurgerMenu } from "../widgets/menu/menu.tsx";
 import { Search } from "../pages/search/search.tsx";
 import { useEvents } from "../shared/fetch-hook/use-events.tsx";
+import { EventPage } from "../pages/event-page/event-page.tsx";
+import { useFavorites } from "../shared/fetch-hook/use-favorites.tsx";
 
 export function App() {
   const { isOpened, setIsOpened } = useBurgerStore();
   const { token, setName, setToken, setId, invalidate } = useAuthStore();
   useEvents();
+  useFavorites();
   useEffect(() => {
     if (token) {
       axios
@@ -55,6 +58,7 @@ export function App() {
         <Route path={"/profile"} element={<Profile />} />
         <Route path={"/schedule"} element={<Schedule />} />
         <Route path={"/search"} element={<Search />} />
+        <Route path={"/event/:id"} element={<EventPage />} />
       </Routes>
     </main>
   );

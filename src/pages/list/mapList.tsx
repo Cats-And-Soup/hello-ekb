@@ -4,7 +4,7 @@ import "./list.css";
 import { Button } from "../../shared/ui/button.tsx";
 import { useNavigate } from "react-router";
 import { Chip } from "../../shared/ui/chip.tsx";
-import { useEventsStore } from "../../shared/stores/events-store.ts";
+import { useEventsStore } from "../../shared/stores/events-store.tsx";
 
 export const MapList = () => {
   const navigate = useNavigate();
