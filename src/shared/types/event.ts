@@ -2,10 +2,13 @@ export interface IEvent {
   id: string;
   title: string;
   description?: string;
-  date: string;
-  time: string;
+  start_datetime: string;
+  end_datetime: string;
+  lon: string;
+  lat: string;
   price: number;
-  image: string;
+  address?: string;
+  image_src: string;
   tags: string[];
 }
 
@@ -15,21 +18,25 @@ export const DefaultEvents: IEvent[] = [
     tags: ["tranding", "18+"],
     title: "Pharaoh",
     description: "премьера нового альбома в Tele-Club",
-    date: "8 сентября",
-    time: "18:00",
+    start_datetime: "13/08/2023",
+    end_datetime: "13/08/2023",
+    lat: "56",
+    lon: "60",
     price: 1000000,
-    image:
+    image_src:
       "https://sportishka.com/uploads/posts/2022-11/1667550932_49-sportishka-com-p-mashina-faraona-pinterest-50.jpg",
   },
   {
     id: "2",
-    title: "S1mple",
-    tags: [],
-    description:
-      "проиграл алкашу из падика 1 на 1 и прошел в полуфинал по поеданию водяры за 5 минут. Событие года",
-    date: "30 августа",
-    time: "18:00",
-    price: 0,
-    image: "https://cq-esports.com/storage/uploads/posts/1406813/1.jpg",
+    tags: ["tranding", "18+"],
+    title: "Pharaoh",
+    description: "премьера нового альбома в Tele-Club",
+    start_datetime: "13/08/2023",
+    end_datetime: "13/08/2023",
+    lat: "56",
+    lon: "60",
+    price: 1000000,
+    image_src:
+      "https://sportishka.com/uploads/posts/2022-11/1667550932_49-sportishka-com-p-mashina-faraona-pinterest-50.jpg",
   },
 ];

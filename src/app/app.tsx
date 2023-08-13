@@ -13,10 +13,12 @@ import { useAuthStore } from "../shared/stores/auth-store.tsx";
 import axios, { AxiosResponse } from "axios";
 import { BurgerMenu } from "../widgets/menu/menu.tsx";
 import { Search } from "../pages/search/search.tsx";
+import { useEvents } from "../shared/fetch-hook/use-events.tsx";
 
 export function App() {
   const { isOpened, setIsOpened } = useBurgerStore();
   const { token, setName, setToken, setId, invalidate } = useAuthStore();
+  useEvents();
   useEffect(() => {
     if (token) {
       axios

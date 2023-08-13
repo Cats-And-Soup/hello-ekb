@@ -2,7 +2,7 @@ import "./chip.css";
 import * as React from "react";
 import { PropsWithChildren } from "react";
 export const Chip: React.FC<
-  PropsWithChildren<{ type: "alert" | "default" }>
+  PropsWithChildren<{ type?: "alert" | "default" }>
 > = ({ children, type = "default" }) => {
   return (
     <div

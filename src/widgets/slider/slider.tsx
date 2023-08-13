@@ -25,7 +25,7 @@ export const Slider: React.FC<SliderProps> = ({ events }) => {
             }}
           >
             <img
-              src={eventModel.image}
+              src={eventModel.image_src}
               width={"100%"}
               height={"100%"}
               alt={"123123123"}

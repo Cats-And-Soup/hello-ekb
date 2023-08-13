@@ -17,7 +17,7 @@ export const Card: React.FC<CardProps> = ({
   onClick,
   tags = [],
 }) => {
-  const isTranding = tags.includes("tranding");
+  const isTranding = tags.includes("Tranding");
   const isForAdults = tags.includes("18+");
 
   return (

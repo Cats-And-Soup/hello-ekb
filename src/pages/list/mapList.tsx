@@ -4,6 +4,7 @@ import "./list.css";
 import { Button } from "../../shared/ui/button.tsx";
 import { useNavigate } from "react-router";
 import { Chip } from "../../shared/ui/chip.tsx";
+import { useEventsStore } from "../../shared/stores/events-store.ts";
 
 export const MapList = () => {
   const navigate = useNavigate();
@@ -23,6 +24,8 @@ export const MapList = () => {
 };
 
 export const MapComponent: React.FC = () => {
+  const { trandingEvents, freeEvents } = useEventsStore();
+  const navigate = useNavigate();
   return (
     <YMaps>
       <Map
@@ -30,7 +33,13 @@ export const MapComponent: React.FC = () => {
         width="100%"
         defaultState={{ center: [56.842862, 60.652578], zoom: 14 }}
       >
-        <Placemark geometry={[56.840508, 60.650206]} />
+        {trandingEvents.concat(freeEvents).map((ev) => (
+          <Placemark
+            geometry={[parseFloat(ev.lon), parseFloat(ev.lat)]}
+            options={{ hintContent: ev.title }}
+            onClick={() => navigate("/event/" + ev.id)}
+          />
+        ))}
       </Map>
     </YMaps>
   );

@@ -1,13 +1,16 @@
 import { Input } from "../../shared/ui/input.tsx";
 import { useState } from "react";
-import { DefaultEvents } from "../../shared/types/event.ts";
 import { Card } from "../../widgets/card/card.tsx";
 import "./search.css";
 import { useNavigate } from "react-router";
+import dayjs from "dayjs";
+import { useEventsStore } from "../../shared/stores/events-store.ts";
 
 export const Search = () => {
   const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
+  const { allEvents } = useEventsStore();
+  console.log(allEvents);
   return (
     <div className={"search-wrapper"}>
       <Input
@@ -17,13 +20,15 @@ export const Search = () => {
         width={"600px"}
       />
       <div className={"search-results"}>
-        {DefaultEvents.map((ev) => (
+        {allEvents.map((ev) => (
           <Card
             onClick={() => navigate("/event/" + ev.id)}
             title={ev.title}
-            description={ev.date}
+            description={dayjs(ev.start_datetime)
+              .add(5, "hours")
+              .format("HH:mm DD.MM")}
             tags={ev.tags}
-            imageSrc={ev.image}
+            imageSrc={ev.image_src}
             key={ev.id}
           />
         ))}

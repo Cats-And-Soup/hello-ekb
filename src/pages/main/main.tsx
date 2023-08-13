@@ -1,9 +1,11 @@
 import { Chip } from "../../shared/ui/chip.tsx";
 import "./main.css";
 import { Slider } from "../../widgets/slider/slider.tsx";
-import { DefaultEvents, IEvent } from "../../shared/types/event.ts";
+import { IEvent } from "../../shared/types/event.ts";
 import { Card } from "../../widgets/card/card.tsx";
 import * as React from "react";
+import { useEventsStore } from "../../shared/stores/events-store.ts";
+import dayjs from "dayjs";
 
 const CardSection: React.FC<{ title: string; events: IEvent[] }> = ({
   title,
@@ -33,8 +35,11 @@ const CardSection: React.FC<{ title: string; events: IEvent[] }> = ({
             title={ev.title}
             key={ev.id}
             tags={ev.tags}
-            description={ev.date + " в " + ev.time}
-            imageSrc={ev.image}
+            description={
+              "Начало в " +
+              dayjs(ev.start_datetime).add(5, "hours").format("HH:mm DD.MM")
+            }
+            imageSrc={ev.image_src}
           />
         ))}
       </div>
@@ -43,6 +48,8 @@ const CardSection: React.FC<{ title: string; events: IEvent[] }> = ({
 };
 
 export const Main = () => {
+  const { trandingEvents, freeEvents, closestEvents } = useEventsStore();
+
   return (
     <div className={"main-wrapper"}>
       <section>
@@ -53,11 +60,11 @@ export const Main = () => {
         ))}
       </section>
       <section>
-        <Slider events={DefaultEvents} />
+        <Slider events={trandingEvents} />
       </section>
-      <CardSection title={"Нет времени ждать"} events={DefaultEvents} />
-      <CardSection title={"Самые ожидаемые"} events={DefaultEvents} />
-      <CardSection title={"Бесплатно"} events={DefaultEvents} />
+      <CardSection title={"Нет времени ждать"} events={closestEvents} />
+      <CardSection title={"Самые ожидаемые"} events={trandingEvents} />
+      <CardSection title={"Бесплатно"} events={freeEvents} />
     </div>
   );
 };
